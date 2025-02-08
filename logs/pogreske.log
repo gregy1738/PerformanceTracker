@@ -1,0 +1,4 @@
+2025-02-08 18:17:15,713 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:22] Pokušaj prijave korisnika koji ne postoji
+2025-02-08 18:17:20,545 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:22] Pokušaj prijave korisnika koji ne postoji
+2025-02-08 22:17:33,475 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:37] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-08 22:18:20,482 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:32] Pokušaj prijave korisnika koji ne postoji

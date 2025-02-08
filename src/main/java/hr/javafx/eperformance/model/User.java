@@ -7,7 +7,7 @@ import hr.javafx.eperformance.enums.EmployeeType;
  * This class is used for storing user credentials.
  */
 
-public class UserCredentials {
+public class User {
 
     private String email;
     private String hashedPassword;
@@ -22,7 +22,7 @@ public class UserCredentials {
      * @param role           the role
      */
 
-    public UserCredentials(String email, String hashedPassword, EmployeeType role) {
+    public User(String email, String hashedPassword, EmployeeType role) {
         this.email = email;
         this.hashedPassword = hashedPassword;
         this.role = role;
