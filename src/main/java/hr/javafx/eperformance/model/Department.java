@@ -2,13 +2,19 @@ package hr.javafx.eperformance.model;
 
 import java.util.Set;
 
-public class Department extends Entity {
+public non-sealed class Department extends Entity implements EmployeeCountable {
 
     private String name;
     private String description;
     private Set<Employee> employees;
 
-    public Department(String name, String description, Set<Employee> employees) {
+    public Department(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    public Department(Long id, String name, String description, Set<Employee> employees) {
+        super(id);
         this.name = name;
         this.description = description;
         this.employees = employees;
@@ -36,5 +42,10 @@ public class Department extends Entity {
 
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
+    }
+
+    @Override
+    public int countEmployees() {
+        return employees.size();
     }
 }

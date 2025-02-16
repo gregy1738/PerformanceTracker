@@ -2,3 +2,127 @@
 2025-02-08 18:17:20,545 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:22] Pokušaj prijave korisnika koji ne postoji
 2025-02-08 22:17:33,475 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:37] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
 2025-02-08 22:18:20,482 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:32] Pokušaj prijave korisnika koji ne postoji
+2025-02-10 10:31:26,957 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:37] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-10 10:34:53,951 ERROR [JavaFX Application Thread] h.j.e.s.AuthService [AuthService.java:37] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-15 18:29:48,641 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:50,762 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:51,242 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:51,428 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:51,614 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:51,787 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:52,139 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:52,340 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:52,519 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:52,684 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:52,890 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:53,056 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:53,219 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:53,404 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:29:53,583 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 18:31:14,588 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] The url cannot be null
+2025-02-15 22:52:33,343 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-15 22:52:40,079 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-15 22:52:43,193 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-15 22:52:46,638 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-15 22:52:47,911 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-16 12:32:00,252 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-16 12:32:07,449 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-16 12:32:17,460 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Connection is broken: "java.net.ConnectException: Connection refused: getsockopt: localhost" [90067-232]
+2025-02-16 12:34:19,692 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:34:19,693 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:35:08,030 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-16 12:35:16,111 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:35:16,112 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:35:58,649 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:35:58,651 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:38:39,478 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:38:39,480 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:38:58,364 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:38:58,366 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:46:03,881 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:46:03,883 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:46:20,061 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 12:46:20,062 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:09:22,461 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:09:22,464 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:09:46,028 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:09:46,031 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:27:58,461 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 13:27:58,463 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:26,879 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:26,882 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:36,209 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:36,217 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:45,697 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:39:45,698 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:14,870 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]
+2025-02-16 17:40:14,880 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:14,882 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:17,164 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:17,166 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:48,366 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:48,367 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:51,241 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]
+2025-02-16 17:40:51,249 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:40:51,250 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:43:55,139 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:43:55,160 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:44:09,759 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:44:09,761 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:44:35,085 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]
+2025-02-16 17:44:36,186 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 17:44:36,197 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Scalar subquery contains more than one row; SQL statement:
+SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?) [90053-232]
+2025-02-16 18:02:22,058 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Odjel s imenom Informatički odjel već postoji.
+2025-02-16 18:03:13,339 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Odjel s imenom Informatički odjel već postoji.
+2025-02-16 18:11:25,333 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Odjel s imenom Informatički odjel već postoji.
+2025-02-16 18:11:41,299 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] Odjel s imenom Informatički odjel već postoji.
+2025-02-16 18:11:53,885 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]
+2025-02-16 18:12:00,292 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]
+2025-02-16 18:13:39,276 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-16 18:14:49,895 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:13] NULL not allowed for column "DEPARTMENT_ID"; SQL statement:
+DELETE FROM department WHERE name = ? [23502-232]

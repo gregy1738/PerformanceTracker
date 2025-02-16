@@ -5,6 +5,7 @@ import hr.javafx.eperformance.enums.EmployeeType;
 /**
  * Represents user credentials class.
  * This class is used for storing user credentials.
+ * This class is stored in the txt file.
  */
 
 public class User {

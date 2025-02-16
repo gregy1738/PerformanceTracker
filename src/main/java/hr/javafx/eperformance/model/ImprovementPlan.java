@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public non-sealed class ImprovementPlan extends Entity implements PerformanceReviewable {
+public class ImprovementPlan extends Entity {
 
     private Employee employee;
     private String description;
@@ -58,13 +58,5 @@ public non-sealed class ImprovementPlan extends Entity implements PerformanceRev
 
     public void setEndDate(LocalDate endDate) {
         this.endDate = endDate;
-    }
-
-    @Override
-    public double calculateAveragePerformanceRating() {
-        return performanceReviews.stream()
-                .mapToDouble(review -> review.getPerformanceMetrics().getPerformanceRating())
-                .average()
-                .orElse(0.0);
     }
 }

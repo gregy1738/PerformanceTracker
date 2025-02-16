@@ -2,8 +2,8 @@ module hr.javafx.eperformance.gregurec_projekt {
     requires javafx.controls;
     requires javafx.fxml;
     requires jbcrypt;
-    requires java.logging;
     requires org.slf4j;
+    requires java.sql;
 
 
     opens hr.javafx.eperformance to javafx.fxml;
