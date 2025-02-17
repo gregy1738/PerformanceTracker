@@ -1,3 +1,0 @@
-adminUser@admin.com:$2a$12$VLgq7kcqkKJNDf/VHMexiOx65FKEt9pjZ1PuOTgOfb9gCqW2mNdz.:DIRECTOR
-adminUser@admin.com:$2a$12$AthEKglzjcgnRltsMP90VOwuD.25JSyrowD3.I3fGkGTsKL4Jnqbe:DIRECTOR
-adminUser@admin.com:$2a$12$sJRN4SIBDnUuXTXvlUJIDOhmDKKZXZ6RWfULd//Hqbdk4VK1KlvB.:DIRECTOR
