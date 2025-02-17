@@ -1,12 +1,15 @@
 package hr.javafx.eperformance.controller;
 
 import hr.javafx.eperformance.exception.DepartmentAlreadyExistsException;
+import hr.javafx.eperformance.helper.SceneManager;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.repository.DepartmentRepository;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+
+import java.io.IOException;
 
 public class DepartmentNewController {
 
@@ -18,7 +21,7 @@ public class DepartmentNewController {
 
     DepartmentRepository departmentRepository = new DepartmentRepository();
 
-    public void saveDepartment() {
+    public void saveDepartment() throws IOException {
         String name = departmentNameTextField.getText();
         String description = departmentDescriptionTextArea.getText();
 
@@ -26,6 +29,7 @@ public class DepartmentNewController {
             Department department = new Department(name, description);
             departmentRepository.save(department);
             showSuccessDialog(name);
+            SceneManager.switchScene("/hr/javafx/eperformance/departmentSearchScreen.fxml", "Pretraga odjela", 900, 500);
         } catch (DepartmentAlreadyExistsException e) {
             showErrorDialog(name);
         }
@@ -49,5 +53,4 @@ public class DepartmentNewController {
         alert.setContentText("Odjel " + name + " je uspješno spremljen.");
         alert.showAndWait();
     }
-
 }

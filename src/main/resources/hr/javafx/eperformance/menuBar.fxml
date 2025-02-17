@@ -10,4 +10,8 @@
         <MenuItem mnemonicParsing="false" onAction="#showDepartmentSearchScreen" text="Pretraži"/>
         <MenuItem mnemonicParsing="false" onAction="#showDepartmentNewScreen" text="Dodaj"/>
     </Menu>
+    <Menu mnemonicParsing="false" text="Zaposlenici">
+        <MenuItem mnemonicParsing="false" onAction="#showEmployeeSearchScreen" text="Pretraži"/>
+        <MenuItem mnemonicParsing="false" onAction="#showEmployeeNewScreen" text="Dodaj"/>
+    </Menu>
 </MenuBar>

@@ -2,6 +2,7 @@ package hr.javafx.eperformance.service;
 
 import hr.javafx.eperformance.exception.InvalidCredentialsException;
 import hr.javafx.eperformance.helper.LoggerUtil;
+import hr.javafx.eperformance.helper.SessionManager;
 import hr.javafx.eperformance.model.User;
 import hr.javafx.eperformance.repository.UserRepository;
 import org.mindrot.jbcrypt.BCrypt;
@@ -36,6 +37,8 @@ public class AuthService implements IAuthService {
             throw new InvalidCredentialsException("Neuspješna prijava");
         }
 
+        SessionManager.setLoggedInUser(user.get());
+        LoggerUtil.logInfo("Korisnik {} se uspješno prijavio", email);
         return true;
     }
 }

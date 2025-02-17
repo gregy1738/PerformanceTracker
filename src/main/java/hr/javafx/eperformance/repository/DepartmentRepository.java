@@ -9,10 +9,7 @@ import hr.javafx.eperformance.model.Employee;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class DepartmentRepository extends AbstractRepository<Department> {
 
@@ -30,7 +27,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
 
-                Set<Employee> employees = findEmployeesByDepartment(name, connection);
+                Set<Employee> employees = findEmployeesByDepartment(id, connection);
                 Department department = new Department(id, name, description, employees);
 
                 departments.add(department);
@@ -45,7 +42,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
     @Override
     public void save(Department entity) {
 
-        if (findByName(entity.getName()) != null) {
+        if (findByName(entity.getName()).isPresent()) {
             String message = "Odjel s imenom " + entity.getName() + " već postoji.";
             LoggerUtil.logError(message);
             throw new DepartmentAlreadyExistsException(message);
@@ -68,12 +65,12 @@ public class DepartmentRepository extends AbstractRepository<Department> {
 
     @Override
     public void delete(Department entity) {
-        String sql = "DELETE FROM department WHERE name = ?";
+        String sql = "DELETE FROM department WHERE id = ?";
 
         try (Connection connection = DatabaseConnection.connectToDatabase();
              PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
-            preparedStatement.setString(1, entity.getName());
+            preparedStatement.setLong(1, entity.getId());
             preparedStatement.executeUpdate();
 
         } catch (IOException | SQLException e) {
@@ -97,13 +94,13 @@ public class DepartmentRepository extends AbstractRepository<Department> {
         }
     }
 
-    private Set<Employee> findEmployeesByDepartment(String name, Connection connection) {
+    private Set<Employee> findEmployeesByDepartment(Long id, Connection connection) {
         Set<Employee> employees = new HashSet<>();
 
-        String sql = "SELECT * FROM employee WHERE department_id = (SELECT id FROM department WHERE name = ?)";
+        String sql = "SELECT * FROM employee WHERE department_id = ?";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
-            preparedStatement.setString(1, name);
+            preparedStatement.setLong(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
@@ -127,10 +124,15 @@ public class DepartmentRepository extends AbstractRepository<Department> {
         return employees;
     }
 
-    private Department findByName(String name) {
+    public Optional<Department> findByName(String name) {
         return findAll().stream()
                 .filter(department -> department.getName().equalsIgnoreCase(name))
-                .findFirst()
-                .orElse(null);
+                .findFirst();
+    }
+
+    public Optional<Department> findById(Long id) {
+        return findAll().stream()
+                .filter(department -> department.getId().equals(id))
+                .findFirst();
     }
 }

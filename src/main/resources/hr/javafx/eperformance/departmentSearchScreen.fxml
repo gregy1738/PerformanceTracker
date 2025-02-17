@@ -53,12 +53,12 @@
                 <TableColumn fx:id="departmentEmployeesColumn" prefWidth="498.3999938964844" text="Zaposlenici" />
             </columns>
         </TableView>
-      <Button mnemonicParsing="false" onAction="#deleteDepartment" styleClass="btn-danger" text="Obriši" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="deleteDepartmentButton" mnemonicParsing="false" onAction="#deleteDepartment" styleClass="btn-danger" text="Obriši" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" onAction="#editDepartment" text="Uredi" GridPane.halignment="CENTER" GridPane.rowIndex="2">
+      <Button fx:id="editDepartmentButton" mnemonicParsing="false" onAction="#editDepartment" text="Uredi" GridPane.halignment="CENTER" GridPane.rowIndex="2">
          <font>
             <Font name="Consolas" size="15.0" />
          </font>

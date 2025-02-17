@@ -14,8 +14,7 @@ public class SceneManager {
 
     private static Stage mainStage;
 
-    private SceneManager() {
-    }
+    private SceneManager() {}
 
     public static void setMainStage(Stage stage) {
         mainStage = stage;

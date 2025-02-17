@@ -21,6 +21,7 @@ public class Employee extends Entity {
      */
 
     public Employee(Builder builder) {
+        super(builder.id);
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
         this.jobTitle = builder.jobTitle;
@@ -49,11 +50,17 @@ public class Employee extends Entity {
     }
 
     public static class Builder {
+        private Long id;
         private String firstName;
         private String lastName;
         private String jobTitle;
         private BigDecimal salary;
         private Department department;
+
+        public Builder id(Long id) {
+            this.id = id;
+            return this;
+        }
 
         public Builder firstName(String firstName) {
             this.firstName = firstName;

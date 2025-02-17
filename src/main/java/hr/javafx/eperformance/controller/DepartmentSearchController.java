@@ -1,18 +1,18 @@
 package hr.javafx.eperformance.controller;
 
+import hr.javafx.eperformance.enums.EmployeeType;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.helper.SceneManager;
+import hr.javafx.eperformance.helper.SessionManager;
 import hr.javafx.eperformance.model.Department;
+import hr.javafx.eperformance.model.User;
 import hr.javafx.eperformance.repository.DepartmentRepository;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -35,9 +35,22 @@ public class DepartmentSearchController {
     @FXML
     private TableColumn<Department, String> departmentEmployeesColumn;
 
+    @FXML
+    private Button editDepartmentButton;
+
+    @FXML
+    private Button deleteDepartmentButton;
+
     private final DepartmentRepository departmentRepository = new DepartmentRepository();
 
     public void initialize() {
+        User loggedInUser = SessionManager.getLoggedInUser();
+
+        if(loggedInUser == null || !loggedInUser.getRole().equals(EmployeeType.DIRECTOR)) {
+            editDepartmentButton.setVisible(false);
+            deleteDepartmentButton.setVisible(false);
+        }
+
         departmentNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         departmentDescriptionColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getDescription()));
         departmentEmployeesColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmployees().stream()
@@ -85,16 +98,15 @@ public class DepartmentSearchController {
         Department department = departmentTableView.getSelectionModel().getSelectedItem();
 
         if (department != null) {
-
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/hr/javafx/eperformance/departmentEditScreen.fxml"));
                 SceneManager.switchScene(loader, "Uređivanje odjela", 900, 500);
+
                 DepartmentEditController departmentEditController = loader.getController();
                 departmentEditController.setDepartment(department);
             } catch (IOException e) {
                 LoggerUtil.logError(e.getMessage());
             }
-
         }
     }
 }
