@@ -149,3 +149,47 @@ DELETE FROM department WHERE name = ? [23502-232]
 2025-02-17 13:53:39,662 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
 2025-02-17 13:56:06,432 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
 2025-02-17 14:19:04,826 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 17:51:03,761 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 17:51:41,355 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik petar.peric@firma.com se uspješno registrirao
+2025-02-17 17:54:00,002 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-17 17:54:04,604 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 17:54:50,789 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik petar.peric@firma.com se uspješno registrirao
+2025-02-17 17:55:12,710 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik petar.peric@firma.com se uspješno prijavio
+2025-02-17 19:21:17,252 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 19:23:02,244 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 19:23:45,528 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 19:28:02,574 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 21:05:43,942 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 21:13:46,446 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 22:18:50,394 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 22:20:14,523 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik petar.peric@firma.com se uspješno prijavio
+2025-02-17 22:22:41,008 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-17 22:22:44,929 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-17 22:22:51,232 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 22:48:01,815 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 22:59:00,123 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-17 22:59:04,510 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 23:01:41,002 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-17 23:01:45,323 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-17 23:03:11,852 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik petar.peric@firma.com se uspješno prijavio
+2025-02-18 11:33:04,174 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 11:33:08,299 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 11:34:04,539 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 13:12:58,178 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 13:13:02,303 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 15:44:56,749 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 15:45:01,384 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 16:59:52,640 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 16:59:56,463 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:04:42,336 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 17:04:46,454 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:05:22,642 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:09:19,493 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 17:09:23,502 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:23:09,792 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 17:23:17,116 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:30:59,408 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 17:31:03,335 ERROR [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:17] Pokušaj prijave s krivom lozinkom za korisnika: adminUser@admin.com 
+2025-02-18 17:31:07,021 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:32:05,150 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik adminUser@admin.com se uspješno prijavio
+2025-02-18 17:34:10,201 INFO [JavaFX Application Thread] h.j.e.h.LoggerUtil [LoggerUtil.java:25] Korisnik marko.maric@firma.com se uspješno registrirao

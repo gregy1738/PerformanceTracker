@@ -26,7 +26,7 @@ public class UserLoginController {
 
         try {
             authService.login(email, password);
-            SceneManager.switchScene("/hr/javafx/eperformance/welcomeScreen.fxml", "Dobrodošli", 700, 500);
+            SceneManager.switchScene("/hr/javafx/eperformance/welcomeScreen.fxml", "Dobrodošli", 900, 500);
         } catch (InvalidCredentialsException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Greška");

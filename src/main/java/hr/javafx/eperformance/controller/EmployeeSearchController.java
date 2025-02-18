@@ -58,9 +58,6 @@ public class EmployeeSearchController {
     @FXML
     private Button deleteEmployeeButton;
 
-    @FXML
-    private Button editEmployeeButton;
-
     private final EmployeeRepository employeeRepository = new EmployeeRepository();
 
     public void initialize() {
@@ -68,7 +65,6 @@ public class EmployeeSearchController {
 
         if(loggedInUser == null || !loggedInUser.getRole().equals(EmployeeType.DIRECTOR)){
             deleteEmployeeButton.setVisible(false);
-            editEmployeeButton.setVisible(false);
         }
 
         employeeIdColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));

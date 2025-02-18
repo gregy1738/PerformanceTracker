@@ -1,15 +1,16 @@
 package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.connection.DatabaseConnection;
+import hr.javafx.eperformance.exception.DatabaseConnectionException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class EmployeeRepository extends AbstractRepository<Employee> {
 
@@ -46,7 +47,7 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
 
             }
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
         return employees;
@@ -68,7 +69,7 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
 
             preparedStatement.executeUpdate();
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
 
@@ -85,7 +86,7 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
             statement.setLong(1, entity.getId());
             statement.executeUpdate();
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
 
@@ -108,8 +109,14 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
 
             statement.executeUpdate();
 
-        } catch (SQLException | IOException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
+    }
+
+    public Optional<Employee> findById(Long id){
+        return findAll().stream()
+                .filter(e -> e.getId().equals(id))
+                .findFirst();
     }
 }

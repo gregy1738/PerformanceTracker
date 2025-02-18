@@ -1,1 +1,3 @@
 adminUser@admin.com:$2a$12$k/BN6OQIiOLSDrDvIkLa9OM0cHOGgF.DdhwhoAwn6ejQbKh15V1gy:DIRECTOR
+petar.peric@firma.com:$2a$10$1l6mck/Vn46/01DP24M4NOrnU435xGrUEjYvawvPfF4BIPBZbik2m:REGULAR
+marko.maric@firma.com:$2a$10$KvtEHq9VUuT7mxV2o9W5EupYR7HQXhmwi0O5t6ZuA5xXCFXJ5u2nS:REGULAR

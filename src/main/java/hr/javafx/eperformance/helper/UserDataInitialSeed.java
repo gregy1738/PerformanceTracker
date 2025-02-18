@@ -14,7 +14,7 @@ public class UserDataInitialSeed {
         Scanner scanner = new Scanner(System.in);
 
         String password = scanner.nextLine();
-        User adminUser = new User("adminUser@admin.com", BCrypt.hashpw(password, BCrypt.gensalt(12)), EmployeeType.DIRECTOR);
+        User adminUser = new User("adminUser@admin.com", BCrypt.hashpw(password, BCrypt.gensalt()), EmployeeType.DIRECTOR);
 
         UserRepository userRepository = new UserRepository();
         userRepository.save(adminUser);

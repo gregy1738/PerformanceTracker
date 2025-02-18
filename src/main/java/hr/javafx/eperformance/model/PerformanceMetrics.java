@@ -6,7 +6,7 @@ package hr.javafx.eperformance.model;
  */
 
 public record PerformanceMetrics(double performanceRating) {
-    double getPerformanceRating() {
+    public double getPerformanceRating() {
         return performanceRating;
     }
 }

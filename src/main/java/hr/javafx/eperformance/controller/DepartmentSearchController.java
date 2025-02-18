@@ -36,9 +36,6 @@ public class DepartmentSearchController {
     private TableColumn<Department, String> departmentEmployeesColumn;
 
     @FXML
-    private Button editDepartmentButton;
-
-    @FXML
     private Button deleteDepartmentButton;
 
     private final DepartmentRepository departmentRepository = new DepartmentRepository();
@@ -47,7 +44,6 @@ public class DepartmentSearchController {
         User loggedInUser = SessionManager.getLoggedInUser();
 
         if(loggedInUser == null || !loggedInUser.getRole().equals(EmployeeType.DIRECTOR)) {
-            editDepartmentButton.setVisible(false);
             deleteDepartmentButton.setVisible(false);
         }
 

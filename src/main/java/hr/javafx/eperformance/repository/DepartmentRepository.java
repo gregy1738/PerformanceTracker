@@ -1,12 +1,12 @@
 package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.connection.DatabaseConnection;
+import hr.javafx.eperformance.exception.DatabaseConnectionException;
 import hr.javafx.eperformance.exception.DepartmentAlreadyExistsException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
 
-import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.*;
 import java.util.*;
@@ -32,7 +32,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
 
                 departments.add(department);
             }
-        } catch (IOException | SQLException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
 
@@ -57,7 +57,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
 
             preparedStatement.executeUpdate();
 
-        } catch (IOException | SQLException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
 
@@ -73,7 +73,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
             preparedStatement.setLong(1, entity.getId());
             preparedStatement.executeUpdate();
 
-        } catch (IOException | SQLException e) {
+        } catch (DatabaseConnectionException | SQLException e) {
             LoggerUtil.logError(e.getMessage());
         }
     }
@@ -89,7 +89,7 @@ public class DepartmentRepository extends AbstractRepository<Department> {
             preparedStatement.setString(2, entity.getName());
 
             preparedStatement.executeUpdate();
-        } catch (IOException | SQLException e) {
+        } catch (SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
     }

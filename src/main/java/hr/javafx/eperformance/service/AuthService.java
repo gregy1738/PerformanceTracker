@@ -1,5 +1,6 @@
 package hr.javafx.eperformance.service;
 
+import hr.javafx.eperformance.enums.EmployeeType;
 import hr.javafx.eperformance.exception.InvalidCredentialsException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.helper.SessionManager;
@@ -40,5 +41,14 @@ public class AuthService implements IAuthService {
         SessionManager.setLoggedInUser(user.get());
         LoggerUtil.logInfo("Korisnik {} se uspješno prijavio", email);
         return true;
+    }
+
+    @Override
+    public void register(String firstName, String lastName, String password) {
+        String hashedPassword = BCrypt.hashpw(password, BCrypt.gensalt());
+        String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@firma.com";
+        User user = new User(email, hashedPassword, EmployeeType.REGULAR);
+        userRepository.save(user);
+        LoggerUtil.logInfo("Korisnik {} se uspješno registrirao", email);
     }
 }

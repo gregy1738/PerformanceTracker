@@ -1,8 +1,12 @@
 package hr.javafx.eperformance.controller;
 
+import hr.javafx.eperformance.enums.EmployeeType;
 import hr.javafx.eperformance.helper.SceneManager;
+import hr.javafx.eperformance.helper.SessionManager;
+import hr.javafx.eperformance.model.ChangeLog;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
+import hr.javafx.eperformance.repository.ChangeLogRepository;
 import hr.javafx.eperformance.repository.DepartmentRepository;
 import hr.javafx.eperformance.repository.EmployeeRepository;
 import javafx.fxml.FXML;
@@ -52,23 +56,51 @@ public class EmployeeEditController {
     }
 
     public void confirmEdit() throws IOException {
+        StringBuilder errorMessage = new StringBuilder();
+
         String firstName = employeeFirstNameTextField.getText();
+        if(firstName.isEmpty()){
+            errorMessage.append("Ime je obavezno polje!\n");
+        }else if(!firstName.matches("^[a-zA-Z]+$")){
+            errorMessage.append("Ime može sadržavati samo slova bez dijakritičkih znakova.\n");
+        }
+
         String lastName = employeeLastNameTextField.getText();
+        if(lastName.isEmpty()){
+            errorMessage.append("Prezime je obavezno polje!\n");
+        }else if (!lastName.matches("^[a-zA-Z]+$")) {
+            errorMessage.append("Prezime može sadržavati samo slova bez dijakritičkih znakova.\n");
+        }
+
         String jobTitle = employeeJobTitleTextField.getText();
+        if(jobTitle.isEmpty()){
+            errorMessage.append("Naziv radnog mjesta je obavezno polje!\n");
+        }
+
         String salaryString = employeeSalaryTextField.getText();
-        BigDecimal salary = new BigDecimal(salaryString);
+        if(salaryString.isEmpty()){
+            errorMessage.append("Plaća je obavezno polje!\n");
+        } else if (!salaryString.matches(("^[1-9]{1,12}(?:\\.\\d{1,4})?$"))) {
+            errorMessage.append("Plaća mora biti pozitivan broj s najviše dvije decimale i unesen u formatu, npr. 1000.00!\n");
+        }
+
         String departmentName = employeeDepartmentComboBox.getValue();
+        if(departmentName == null){
+            errorMessage.append("Odabir odjela je obavezno polje!\n");
+        }
 
         Optional<Department> department = new DepartmentRepository().findByName(departmentName);
 
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Potvrda uređivanja");
-        alert.setHeaderText("Potvrda uređivanja zaposlenika");
-        alert.setContentText("Jeste li sigurni da želite urediti zaposlenika " + firstName + " " + lastName + "?");
-        alert.showAndWait();
+        Alert alert = confirmationAlert(firstName, lastName);
 
-        if (alert.getResult().getText().equals("OK")) {
-            Employee employee = new Employee.Builder()
+        if(!errorMessage.isEmpty()){
+
+            errorAlert(errorMessage);
+
+        }else if (alert.getResult().getText().equals("OK")) {
+
+            BigDecimal salary = new BigDecimal(salaryString);
+            Employee newEmployee = new Employee.Builder()
                     .id(id)
                     .firstName(firstName)
                     .lastName(lastName)
@@ -76,14 +108,61 @@ public class EmployeeEditController {
                     .salary(salary)
                     .department(department.orElse(null))
                     .build();
-            employeeRepository.update(employee);
+
+            Optional<Employee> oldEmployeeOptional = employeeRepository.findById(id);
+            EmployeeType changedByRole = SessionManager.getLoggedInUser().getRole();
+            String changedByEmail = SessionManager.getLoggedInUser().getEmail();
+
+            if(oldEmployeeOptional.isPresent()) {
+                Employee oldEmployee = oldEmployeeOptional.get();
+                changedValuesCheck(oldEmployee, newEmployee, changedByRole, changedByEmail);
+            }
+
+            employeeRepository.update(newEmployee);
             SceneManager.switchScene("/hr/javafx/eperformance/employeeSearchScreen.fxml", "Pretraga zaposlenika", 900, 500);
+
         } else {
             alert.close();
         }
     }
 
+    private static void errorAlert(StringBuilder errorMessage) {
+        Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+        errorAlert.setTitle("Pogreška");
+        errorAlert.setHeaderText("Neispravni podaci");
+        errorAlert.setContentText(errorMessage.toString());
+        errorAlert.showAndWait();
+    }
 
+    private static Alert confirmationAlert(String firstName, String lastName) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Potvrda uređivanja");
+        alert.setHeaderText("Potvrda uređivanja zaposlenika");
+        alert.setContentText("Jeste li sigurni da želite urediti zaposlenika " + firstName + " " + lastName + "?");
+        alert.showAndWait();
+        return alert;
+    }
 
-
+    private static void changedValuesCheck(Employee oldEmployee, Employee newEmployee, EmployeeType changedByRole, String changedByEmail) {
+        if (!oldEmployee.getFirstName().equals(newEmployee.getFirstName())) {
+            ChangeLogRepository.saveChange(new ChangeLog("Ime zaposlenika",
+                    oldEmployee.getFirstName(), newEmployee.getFirstName(), changedByEmail, changedByRole));
+        }
+        if (!oldEmployee.getLastName().equals(newEmployee.getLastName())) {
+            ChangeLogRepository.saveChange(new ChangeLog("Prezime zaposlenika",
+                    oldEmployee.getLastName(), newEmployee.getLastName(), changedByEmail, changedByRole));
+        }
+        if (!oldEmployee.getJobTitle().equals(newEmployee.getJobTitle())) {
+            ChangeLogRepository.saveChange(new ChangeLog("Naziv radnog mjesta",
+                    oldEmployee.getJobTitle(), newEmployee.getJobTitle(), changedByEmail, changedByRole));
+        }
+        if (oldEmployee.getSalary().compareTo(newEmployee.getSalary()) != 0) {
+            ChangeLogRepository.saveChange(new ChangeLog("Plaća",
+                    oldEmployee.getSalary().toString(), newEmployee.getSalary().toString(), changedByEmail, changedByRole));
+        }
+        if (!oldEmployee.getDepartment().getName().equals(newEmployee.getDepartment().getName())) {
+            ChangeLogRepository.saveChange(new ChangeLog("Odjel",
+                    oldEmployee.getDepartment().getName(), newEmployee.getDepartment().getName(), changedByEmail, changedByRole));
+        }
+    }
 }

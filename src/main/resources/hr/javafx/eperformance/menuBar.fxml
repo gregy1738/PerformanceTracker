@@ -14,4 +14,15 @@
         <MenuItem mnemonicParsing="false" onAction="#showEmployeeSearchScreen" text="Pretraži"/>
         <MenuItem mnemonicParsing="false" onAction="#showEmployeeNewScreen" text="Dodaj"/>
     </Menu>
+    <Menu mnemonicParsing="false" text="Planovi poboljšanja">
+        <MenuItem mnemonicParsing="false" onAction="#showImprovementPlanSearchScreen" text="Pretraži"/>
+        <MenuItem mnemonicParsing="false" onAction="#showImprovementPlanNewScreen" text="Dodaj"/>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Izvještaji">
+        <MenuItem mnemonicParsing="false" onAction="#showPerformanceReviewSearchScreen" text="Pretraži"/>
+        <MenuItem mnemonicParsing="false" onAction="#showPerformanceReviewNewScreen" text="Dodaj"/>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Promjene">
+        <MenuItem mnemonicParsing="false" onAction="#showChangeLogScreen" text="Prikaži"/>
+    </Menu>
 </MenuBar>

@@ -16,7 +16,7 @@ public class MenuController {
     public void showDepartmentNewScreen() throws IOException {
         if (SessionManager.getLoggedInUser() == null || SessionManager.getLoggedInUser().getRole() != EmployeeType.DIRECTOR) {
             showErrorDialog();
-            SceneManager.switchScene("/hr/javafx/eperformance/welcomeScreen.fxml", "Dobrodošli", 900, 500);
+            redirectToWelcomeScreen();
         } else {
             SceneManager.switchScene("/hr/javafx/eperformance/departmentNewScreen.fxml", "Dodaj odjel", 900, 500);
         }
@@ -29,10 +29,50 @@ public class MenuController {
     public void showEmployeeNewScreen() throws IOException {
         if (SessionManager.getLoggedInUser() == null || SessionManager.getLoggedInUser().getRole() != EmployeeType.DIRECTOR) {
             showErrorDialog();
-            SceneManager.switchScene("/hr/javafx/eperformance/welcomeScreen.fxml", "Dobrodošli", 900, 500);
+            redirectToWelcomeScreen();
         } else {
             SceneManager.switchScene("/hr/javafx/eperformance/employeeNewScreen.fxml", "Dodaj zaposlenika", 900, 500);
         }
+    }
+
+    public void showImprovementPlanSearchScreen() throws IOException {
+        SceneManager.switchScene("/hr/javafx/eperformance/improvementPlanSearchScreen.fxml", "Pretraga planova poboljšanja", 900, 500);
+    }
+
+    public void showImprovementPlanNewScreen() throws IOException {
+        if (SessionManager.getLoggedInUser() == null || SessionManager.getLoggedInUser().getRole() != EmployeeType.DIRECTOR) {
+            showErrorDialog();
+            redirectToWelcomeScreen();
+        } else {
+            SceneManager.switchScene("/hr/javafx/eperformance/improvementPlanNewScreen.fxml", "Dodaj plan poboljšanja", 900, 500);
+        }
+    }
+
+    public void showPerformanceReviewSearchScreen() throws IOException {
+        SceneManager.switchScene("/hr/javafx/eperformance/performanceReviewSearchScreen.fxml", "Pretraga ocjena", 900, 500);
+    }
+
+    public void showPerformanceReviewNewScreen() throws IOException {
+        if (SessionManager.getLoggedInUser() == null || SessionManager.getLoggedInUser().getRole() != EmployeeType.DIRECTOR) {
+            showErrorDialog();
+            redirectToWelcomeScreen();
+        } else {
+            SceneManager.switchScene("/hr/javafx/eperformance/performanceReviewNewScreen.fxml", "Dodaj ocjenu", 900, 500);
+        }
+    }
+
+    public void showChangeLogScreen() throws IOException {
+        if(SessionManager.getLoggedInUser() == null || SessionManager.getLoggedInUser().getRole() != EmployeeType.DIRECTOR) {
+            showErrorDialog();
+            redirectToWelcomeScreen();
+        } else {
+            SceneManager.switchScene("/hr/javafx/eperformance/changeLogScreen.fxml", "Povijest promjena", 900, 500);
+        }
+    }
+
+
+    private static void redirectToWelcomeScreen() throws IOException {
+        SceneManager.switchScene("/hr/javafx/eperformance/welcomeScreen.fxml","Dobrodošli", 900, 500);
     }
 
     private static void showErrorDialog() {

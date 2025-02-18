@@ -1,7 +1,6 @@
 package hr.javafx.eperformance.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ImprovementPlan extends Entity {
@@ -12,10 +11,17 @@ public class ImprovementPlan extends Entity {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    public ImprovementPlan(Employee employee, String description, List<PerformanceReview> performanceReviews, LocalDate startDate, LocalDate endDate) {
+    public ImprovementPlan(Long id, Employee employee, String description, List<PerformanceReview> performanceReviews, LocalDate startDate, LocalDate endDate) {
+        super(id);
         this.employee = employee;
         this.description = description;
-        this.performanceReviews = new ArrayList<>(performanceReviews);
+        this.performanceReviews = performanceReviews;
+        this.startDate = startDate;
+        this.endDate = endDate;
+    }
+
+    public ImprovementPlan(Long id, LocalDate startDate, LocalDate endDate) {
+        super(id);
         this.startDate = startDate;
         this.endDate = endDate;
     }

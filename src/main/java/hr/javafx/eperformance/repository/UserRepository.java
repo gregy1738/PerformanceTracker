@@ -50,8 +50,8 @@ public class UserRepository {
 
     public void save(User user) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
-            writer.write(user.getEmail() + ":" + user.getHashedPassword() + ":" + user.getRole().name());
             writer.newLine();
+            writer.write(user.getEmail() + ":" + user.getHashedPassword() + ":" + user.getRole().name());
         } catch (IOException e) {
             e.printStackTrace();
         }
