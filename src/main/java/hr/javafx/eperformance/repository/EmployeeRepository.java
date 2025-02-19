@@ -2,6 +2,7 @@ package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.connection.DatabaseConnection;
 import hr.javafx.eperformance.exception.DatabaseConnectionException;
+import hr.javafx.eperformance.exception.EmptyResultSetException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
@@ -19,11 +20,13 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
         List<Employee> employees = new ArrayList<>();
 
         try (Connection connection = DatabaseConnection.connectToDatabase();
-             Statement statement = connection.createStatement()) {
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM employee")) {
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM employee");
+            boolean hasResult = false;
 
             while (resultSet.next()) {
+                hasResult = true;
                 Long id = resultSet.getLong("id");
                 String firstName = resultSet.getString("first_name");
                 String lastName = resultSet.getString("last_name");
@@ -47,7 +50,11 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
 
             }
 
-        } catch (SQLException | DatabaseConnectionException e) {
+            if (!hasResult) {
+                throw new EmptyResultSetException("Nema zapisa u tablici zaposlenik.");
+            }
+
+        } catch (EmptyResultSetException | SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
         return employees;
@@ -80,8 +87,8 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
 
         String sql = "DELETE FROM employee WHERE id = ?";
 
-        try(Connection connection = DatabaseConnection.connectToDatabase();
-            PreparedStatement statement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             PreparedStatement statement = connection.prepareStatement(sql)) {
 
             statement.setLong(1, entity.getId());
             statement.executeUpdate();
@@ -114,7 +121,7 @@ public class EmployeeRepository extends AbstractRepository<Employee> {
         }
     }
 
-    public Optional<Employee> findById(Long id){
+    public Optional<Employee> findById(Long id) {
         return findAll().stream()
                 .filter(e -> e.getId().equals(id))
                 .findFirst();

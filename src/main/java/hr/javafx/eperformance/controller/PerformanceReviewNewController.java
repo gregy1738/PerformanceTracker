@@ -68,12 +68,12 @@ public class PerformanceReviewNewController {
 
         String review = performanceReviewTextField.getText();
         if (review.isEmpty()) {
-            errorMessage.append("Pregled je obavezno polje.\n");
+            errorMessage.append("Ocjena je obavezno polje.\n");
         }
 
         String reviewer = performanceReviewerTextField.getText();
         if (reviewer.isEmpty()) {
-            errorMessage.append("Recenzent je obavezno polje.\n");
+            errorMessage.append("Ocjenjivač je obavezno polje.\n");
         }
 
         String comment = performanceCommentTextArea.getText();
@@ -81,8 +81,8 @@ public class PerformanceReviewNewController {
         LocalDate date = performanceDatePicker.getValue();
         if (date == null) {
             errorMessage.append("Datum je obavezno polje.\n");
-        } else if (date.isAfter(LocalDate.now())) {
-            errorMessage.append("Datum ne može biti u budućnosti.\n");
+        } else if (date.isBefore(LocalDate.now())) {
+            errorMessage.append("Datum ne može biti u prošlosti.\n");
         }
 
         if (!errorMessage.isEmpty()) {
@@ -113,7 +113,7 @@ public class PerformanceReviewNewController {
             performanceReviewRepository.save(performanceReview);
 
             employee.ifPresent(e -> showSuccessDialog(e.getFirstName(), e.getLastName()));
-            SceneManager.switchScene("/hr/javafx/eperformance/performanceReviewSearchScreen.fxml", "Pretraga ivzještaja", 900, 500);
+            SceneManager.switchScene("/hr/javafx/eperformance/performanceReviewSearchScreen.fxml", "Pretraga izvještaja", 900, 500);
         }
     }
 
@@ -137,6 +137,5 @@ public class PerformanceReviewNewController {
             performanceImprovementPlanComboBox.getItems().add(improvementPlan.getDescription());
         }
     }
-
 
 }

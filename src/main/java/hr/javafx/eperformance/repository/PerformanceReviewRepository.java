@@ -2,6 +2,7 @@ package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.connection.DatabaseConnection;
 import hr.javafx.eperformance.exception.DatabaseConnectionException;
+import hr.javafx.eperformance.exception.EmptyResultSetException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.*;
 
@@ -12,16 +13,25 @@ import java.util.List;
 import java.util.Optional;
 
 public class PerformanceReviewRepository extends AbstractRepository<PerformanceReview> {
+
+    private static boolean databaseAccessInProgress = false;
+
     @Override
-    public List<PerformanceReview> findAll() {
+    public synchronized List<PerformanceReview> findAll() {
+
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na pristup bazi podataka.");
+
+        databaseAccessInProgress = true;
         List<PerformanceReview> performanceReviews = new ArrayList<>();
 
-        try(Connection connection = DatabaseConnection.connectToDatabase();
-            Statement statement = connection.createStatement()) {
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM performance_review")) {
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM performance_review");
+            boolean hasResult = false;
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
+                hasResult = true;
                 Long id = resultSet.getLong("id");
                 Long employeeId = resultSet.getLong("employee_id");
                 String review = resultSet.getString("review");
@@ -48,18 +58,29 @@ public class PerformanceReviewRepository extends AbstractRepository<PerformanceR
                 performanceReviews.add(performanceReview);
             }
 
-        } catch(SQLException | DatabaseConnectionException e){
-            LoggerUtil.logError(e.getMessage());
+            if (!hasResult) {
+                throw new EmptyResultSetException("Nema zapisa u tablici izvještaja.");
+            }
+
+        } catch (EmptyResultSetException | SQLException | DatabaseConnectionException e) {
+            LoggerUtil.logError("Pogreška prilikom dohvaćanja podataka: " + e.getMessage());
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
         }
+
         return performanceReviews;
     }
 
     @Override
-    public void save(PerformanceReview entity) {
+    public synchronized void save(PerformanceReview entity) {
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na unos podataka.");
+
+        databaseAccessInProgress = true;
         String sql = "INSERT INTO performance_review (employee_id, review, reviewer, comment, date, performance_rating, improvement_plan_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try(Connection connection = DatabaseConnection.connectToDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setLong(1, entity.getEmployee().getId());
             preparedStatement.setString(2, entity.getReview());
@@ -71,32 +92,44 @@ public class PerformanceReviewRepository extends AbstractRepository<PerformanceR
 
             preparedStatement.executeUpdate();
 
-        } catch(SQLException | DatabaseConnectionException e) {
-            LoggerUtil.logError(e.getMessage());
+        } catch (SQLException | DatabaseConnectionException e) {
+            LoggerUtil.logError("Pogreška prilikom spremanja podataka: " + e.getMessage());
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
         }
     }
 
     @Override
-    public void delete(PerformanceReview entity) {
+    public synchronized void delete(PerformanceReview entity) {
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na brisanje podataka.");
+
+        databaseAccessInProgress = true;
         String sql = "DELETE FROM performance_review WHERE id = ?";
 
-        try(Connection connection = DatabaseConnection.connectToDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setLong(1, entity.getId());
             preparedStatement.executeUpdate();
 
-        } catch(SQLException | DatabaseConnectionException e) {
-            LoggerUtil.logError(e.getMessage());
+        } catch (SQLException | DatabaseConnectionException e) {
+            LoggerUtil.logError("Pogreška prilikom brisanja podataka: " + e.getMessage());
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
         }
     }
 
     @Override
-    public void update(PerformanceReview entity) {
+    public synchronized void update(PerformanceReview entity) {
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na ažuriranje podataka.");
+
+        databaseAccessInProgress = true;
         String sql = "UPDATE performance_review SET review = ?, comment = ?, performance_rating = ? WHERE id = ?";
 
-        try(Connection connection = DatabaseConnection.connectToDatabase();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
 
             preparedStatement.setString(1, entity.getReview());
             preparedStatement.setString(2, entity.getComment());
@@ -105,14 +138,61 @@ public class PerformanceReviewRepository extends AbstractRepository<PerformanceR
 
             preparedStatement.executeUpdate();
 
-        } catch(SQLException | DatabaseConnectionException e) {
-            LoggerUtil.logError(e.getMessage());
+        } catch (SQLException | DatabaseConnectionException e) {
+            LoggerUtil.logError("Pogreška prilikom ažuriranja podataka: " + e.getMessage());
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
         }
     }
 
-    public Optional<PerformanceReview> findById(Long id){
-        return findAll().stream()
-                .filter(performanceReview -> performanceReview.getId().equals(id))
-                .findFirst();
+    public synchronized void updateRatingOnly(Long reviewId, double newRating) {
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na ažuriranje ocjene.");
+
+        databaseAccessInProgress = true;
+        String sql = "UPDATE performance_review SET performance_rating = ? WHERE id = ?";
+
+        try (Connection connection = DatabaseConnection.connectToDatabase();
+             PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+
+            preparedStatement.setDouble(1, newRating);
+            preparedStatement.setLong(2, reviewId);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException | DatabaseConnectionException e) {
+            LoggerUtil.logError("Pogreška prilikom ažuriranja ocjene: " + e.getMessage());
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
+        }
+    }
+
+    public synchronized Optional<PerformanceReview> findById(Long id) {
+        databaseAccessInProgress("Pogreška: Nit prekinuta prilikom čekanja na dohvaćanje podataka.");
+
+        databaseAccessInProgress = true;
+        Optional<PerformanceReview> result = Optional.empty();
+
+        try {
+            result = findAll().stream()
+                    .filter(performanceReview -> performanceReview.getId().equals(id))
+                    .findFirst();
+        } finally {
+            databaseAccessInProgress = false;
+            notifyAll();
+        }
+
+        return result;
+    }
+
+    private synchronized void databaseAccessInProgress(String message) {
+        while (databaseAccessInProgress) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                LoggerUtil.logError(message);
+            }
+        }
     }
 }

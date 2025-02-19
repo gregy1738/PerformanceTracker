@@ -5,8 +5,8 @@ package hr.javafx.eperformance.model;
  * @param performanceRating double value of performance rating of an employee
  */
 
-public record PerformanceMetrics(double performanceRating) {
-    public double getPerformanceRating() {
+public record PerformanceMetrics(Double performanceRating) {
+    public Double getPerformanceRating() {
         return performanceRating;
     }
 }

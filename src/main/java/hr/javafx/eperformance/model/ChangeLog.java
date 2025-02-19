@@ -5,6 +5,10 @@ import hr.javafx.eperformance.enums.EmployeeType;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * This class is used to store the change log.
+ */
+
 public class ChangeLog implements Serializable {
 
     private String fieldChanged;

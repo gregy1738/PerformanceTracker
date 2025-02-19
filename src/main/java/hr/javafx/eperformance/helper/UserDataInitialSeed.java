@@ -7,6 +7,10 @@ import org.mindrot.jbcrypt.BCrypt;
 
 import java.util.Scanner;
 
+/**
+ * Class used for initial seeding of the database with an admin user.
+ */
+
 public class UserDataInitialSeed {
 
     public static void main(String[] args) {

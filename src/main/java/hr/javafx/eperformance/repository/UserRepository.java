@@ -1,6 +1,7 @@
 package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.enums.EmployeeType;
+import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.User;
 
 import java.io.*;
@@ -37,7 +38,7 @@ public class UserRepository {
                 users.add(user);
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            LoggerUtil.logError("Pogreška prilikom čitanja korisnika.");
         }
 
         return users;
@@ -53,7 +54,7 @@ public class UserRepository {
             writer.newLine();
             writer.write(user.getEmail() + ":" + user.getHashedPassword() + ":" + user.getRole().name());
         } catch (IOException e) {
-            e.printStackTrace();
+            LoggerUtil.logError("Pogreška prilikom spremanja korisnika.");
         }
     }
 

@@ -104,7 +104,7 @@ public class PerformanceReviewEditController {
     }
 
     private static void changedValuesCheck(PerformanceReview oldReview, PerformanceReview newReview, EmployeeType changedByRole, String changedByEmail) {
-        if (oldReview.getPerformanceMetrics().getPerformanceRating() != newReview.getPerformanceMetrics().getPerformanceRating()) {
+        if (oldReview.getPerformanceMetrics().getPerformanceRating().equals(newReview.getPerformanceMetrics().getPerformanceRating())){
             ChangeLogRepository.saveChange(new ChangeLog("Ocjena performansi",
                     String.valueOf(oldReview.getPerformanceMetrics().getPerformanceRating()),
                     String.valueOf(newReview.getPerformanceMetrics().getPerformanceRating()),

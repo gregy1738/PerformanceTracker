@@ -9,9 +9,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
 
+/**
+ * This class is used to connect to the database.
+ */
+
 public class DatabaseConnection {
 
     private DatabaseConnection() {}
+
+    /**
+     * This method is used to connect to the database.
+     * @return Connection - connection to the database.
+     * @throws DatabaseConnectionException - if there is an error while connecting to the database.
+     */
 
     public static Connection connectToDatabase() throws DatabaseConnectionException {
         Properties props = new Properties();

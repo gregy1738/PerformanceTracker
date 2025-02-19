@@ -52,7 +52,9 @@ public class EmployeeEditController {
         employeeLastNameTextField.setText(employee.getLastName());
         employeeJobTitleTextField.setText(employee.getJobTitle());
         employeeSalaryTextField.setText(String.valueOf(employee.getSalary()));
-        employeeDepartmentComboBox.setValue(employee.getDepartment().getName());
+        if(employee.getDepartment() != null){
+            employeeDepartmentComboBox.setValue(employee.getDepartment().getName());
+        }
     }
 
     public void confirmEdit() throws IOException {
@@ -80,8 +82,8 @@ public class EmployeeEditController {
         String salaryString = employeeSalaryTextField.getText();
         if(salaryString.isEmpty()){
             errorMessage.append("Plaća je obavezno polje!\n");
-        } else if (!salaryString.matches(("^[1-9]{1,12}(?:\\.\\d{1,4})?$"))) {
-            errorMessage.append("Plaća mora biti pozitivan broj s najviše dvije decimale i unesen u formatu, npr. 1000.00!\n");
+        } else if (!salaryString.matches(("^([1-9]\\d{2,11}|0)(\\.\\d{1,2})?$"))) {
+            errorMessage.append("Plaća mora biti pozitivan broj s najviše dvije decimale, veći od 99 i unesen u formatu, npr. 1000.00!\n");
         }
 
         String departmentName = employeeDepartmentComboBox.getValue();
@@ -160,7 +162,11 @@ public class EmployeeEditController {
             ChangeLogRepository.saveChange(new ChangeLog("Plaća",
                     oldEmployee.getSalary().toString(), newEmployee.getSalary().toString(), changedByEmail, changedByRole));
         }
-        if (!oldEmployee.getDepartment().getName().equals(newEmployee.getDepartment().getName())) {
+        if(oldEmployee.getDepartment() == null && newEmployee.getDepartment() != null) {
+            ChangeLogRepository.saveChange(new ChangeLog("Odjel",
+                    "Nepostojeći odjel", newEmployee.getDepartment().getName(), changedByEmail, changedByRole));
+        }
+        else if (!oldEmployee.getDepartment().getName().equals(newEmployee.getDepartment().getName())) {
             ChangeLogRepository.saveChange(new ChangeLog("Odjel",
                     oldEmployee.getDepartment().getName(), newEmployee.getDepartment().getName(), changedByEmail, changedByRole));
         }

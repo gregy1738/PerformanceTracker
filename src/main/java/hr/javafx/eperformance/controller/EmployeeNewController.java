@@ -77,8 +77,8 @@ public class EmployeeNewController {
         String salaryString = employeeSalaryTextField.getText();
         if (salaryString.isEmpty()) {
             errorMessage.append("Plaća je obavezno polje.\n");
-        } else if (!salaryString.matches(("^[1-9]{1,12}(?:\\.\\d{1,4})?$"))) {
-            errorMessage.append("Plaća mora biti pozitivan broj s najviše dvije decimale i unesen u formatu, npr. 1000.00!\n");
+        } else if (!salaryString.matches(("^([1-9]\\d{2,11}|0)(\\.\\d{1,2})?$"))) {
+            errorMessage.append("Plaća mora biti pozitivan broj s najviše dvije decimale, veći od 99 i unesen u formatu, npr. 1000.00!\n");
         }
 
         String departmentName = employeeDepartmentComboBox.getValue();

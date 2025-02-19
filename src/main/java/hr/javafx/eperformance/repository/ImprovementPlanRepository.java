@@ -2,6 +2,7 @@ package hr.javafx.eperformance.repository;
 
 import hr.javafx.eperformance.connection.DatabaseConnection;
 import hr.javafx.eperformance.exception.DatabaseConnectionException;
+import hr.javafx.eperformance.exception.EmptyResultSetException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.Employee;
 import hr.javafx.eperformance.model.ImprovementPlan;
@@ -18,11 +19,13 @@ public class ImprovementPlanRepository extends AbstractRepository<ImprovementPla
         List<ImprovementPlan> improvementPlans = new ArrayList<>();
 
         try(Connection connection = DatabaseConnection.connectToDatabase();
-            Statement statement = connection.createStatement()) {
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery("SELECT * FROM improvement_plan")) {
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM improvement_plan");
+            boolean hasResult = false;
 
             while(resultSet.next()) {
+                hasResult = true;
                 Long id = resultSet.getLong("id");
                 Long employeeId = resultSet.getLong("employee_id");
                 String description = resultSet.getString("description");
@@ -34,7 +37,12 @@ public class ImprovementPlanRepository extends AbstractRepository<ImprovementPla
                 ImprovementPlan improvementPlan = new ImprovementPlan(id, employee, description, null, startDate, endDate);
                 improvementPlans.add(improvementPlan);
             }
-        } catch (SQLException | DatabaseConnectionException e) {
+
+            if(!hasResult) {
+                throw new EmptyResultSetException("Nema zapisa u tablici plan poboljsanja.");
+            }
+
+        } catch (EmptyResultSetException | SQLException | DatabaseConnectionException e) {
             LoggerUtil.logError(e.getMessage());
         }
         return improvementPlans;

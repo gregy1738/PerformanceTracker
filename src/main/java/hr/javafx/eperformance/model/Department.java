@@ -2,6 +2,10 @@ package hr.javafx.eperformance.model;
 
 import java.util.Set;
 
+/**
+ * This class is used to represent the department.
+ */
+
 public non-sealed class Department extends Entity implements EmployeeCountable {
 
     private String name;

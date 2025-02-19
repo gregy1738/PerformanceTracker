@@ -2,6 +2,10 @@ package hr.javafx.eperformance.model;
 
 import java.time.LocalDate;
 
+/**
+ * This class is used to represent the performance review.
+ */
+
 public class PerformanceReview extends Entity {
     private Employee employee;
     private String review;
@@ -10,6 +14,11 @@ public class PerformanceReview extends Entity {
     private LocalDate date;
     private ImprovementPlan improvementPlan;
     private final PerformanceMetrics performanceMetrics;
+
+    /**
+     * This constructor that is made using BuilderPattern is used to create the performance review.
+     * @param builder
+     */
 
     private PerformanceReview(Builder builder) {
         super(builder.id);

@@ -4,6 +4,7 @@ import hr.javafx.eperformance.enums.EmployeeType;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.helper.SceneManager;
 import hr.javafx.eperformance.helper.SessionManager;
+import hr.javafx.eperformance.helper.ThreadHelper;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
 import hr.javafx.eperformance.model.User;
@@ -18,7 +19,7 @@ import javafx.scene.control.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.List;
+import java.util.*;
 
 public class EmployeeSearchController {
 
@@ -58,7 +59,14 @@ public class EmployeeSearchController {
     @FXML
     private Button deleteEmployeeButton;
 
+    @FXML
+    private Label employeePerformanceRatingLabel;
+
+    @FXML
+    private Label employeeUpdatePerformanceRatingLabel;
+
     private final EmployeeRepository employeeRepository = new EmployeeRepository();
+    private final ThreadHelper threadHelper = new ThreadHelper();
 
     public void initialize() {
         User loggedInUser = SessionManager.getLoggedInUser();
@@ -74,7 +82,10 @@ public class EmployeeSearchController {
         employeeSalaryColumn.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getSalary())));
         employeeDepartmentColumn.setCellValueFactory(cellData -> new SimpleStringProperty
                 (cellData.getValue().getDepartment() != null ? cellData.getValue().getDepartment().getName() : "Zaposleniku nije dodijeljen odjel"));
+
         populateComboBox();
+        threadHelper.highestPerformanceRating(employeePerformanceRatingLabel);
+        threadHelper.updatePerformanceRating(employeeUpdatePerformanceRatingLabel);
     }
 
     public void filterEmployees() {
@@ -135,7 +146,6 @@ public class EmployeeSearchController {
         Employee employee = employeeTableView.getSelectionModel().getSelectedItem();
 
         if (employee != null) {
-
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/hr/javafx/eperformance/employeeEditScreen.fxml"));
                 SceneManager.switchScene(loader, "Uređivanje zaposlenika", 900, 500);
@@ -155,5 +165,4 @@ public class EmployeeSearchController {
             }
         }
     }
-
 }

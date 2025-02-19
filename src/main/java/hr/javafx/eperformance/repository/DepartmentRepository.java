@@ -3,6 +3,7 @@ package hr.javafx.eperformance.repository;
 import hr.javafx.eperformance.connection.DatabaseConnection;
 import hr.javafx.eperformance.exception.DatabaseConnectionException;
 import hr.javafx.eperformance.exception.DepartmentAlreadyExistsException;
+import hr.javafx.eperformance.exception.EmptyResultSetException;
 import hr.javafx.eperformance.helper.LoggerUtil;
 import hr.javafx.eperformance.model.Department;
 import hr.javafx.eperformance.model.Employee;
@@ -18,11 +19,13 @@ public class DepartmentRepository extends AbstractRepository<Department> {
         List<Department> departments = new ArrayList<>();
 
         try (Connection connection = DatabaseConnection.connectToDatabase();
-             Statement statement = connection.createStatement()) {
+             Statement statement = connection.createStatement();
+             ResultSet resultSet = statement.executeQuery("SELECT * FROM department")) {
 
-            ResultSet resultSet = statement.executeQuery("SELECT * FROM department");
+            boolean hasResult = false;
 
             while (resultSet.next()) {
+                hasResult = true;
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
@@ -32,7 +35,12 @@ public class DepartmentRepository extends AbstractRepository<Department> {
 
                 departments.add(department);
             }
-        } catch (SQLException | DatabaseConnectionException e) {
+
+            if (!hasResult) {
+                throw new EmptyResultSetException("Nema zapisa u tablici odjel.");
+            }
+
+        } catch (SQLException | DatabaseConnectionException | EmptyResultSetException e) {
             LoggerUtil.logError(e.getMessage());
         }
 
